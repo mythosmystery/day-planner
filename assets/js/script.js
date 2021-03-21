@@ -2,9 +2,13 @@ var currentDayEl = $("#current-day");
 var timeblocksListEl = $("#timeblocks");
 var textareasEl = [$("#1"), $("#2"), $("#3"), $("#4"), $("#5"), $("#6"), $("#7"), $("#8"), $("#9")];
 var currentCalendar = { boxes: [""] };
-
 var today = moment();
+
 currentDayEl.text(today.format("dddd, MMMM Do YYYY"));
+
+if(localStorage.getItem("schedule") == null){
+    localStorage.setItem("schedule", JSON.stringify(currentCalendar));
+}
 
 setCalText();
 setHourColors();
@@ -27,7 +31,7 @@ function saveCalEntry(event) {
 }
 function setHourColors() {
    var hourIndex = today.hour() - 9;
-   
+
    for (let i = 0; i < textareasEl.length; i++) {
       if (hourIndex == i) {
          textareasEl[i].addClass("present");
