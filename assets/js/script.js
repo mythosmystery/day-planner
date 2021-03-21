@@ -26,8 +26,8 @@ function saveCalEntry(event) {
    localStorage.setItem("schedule", JSON.stringify(currentCalendar));
 }
 function setHourColors() {
-  // var hourIndex = today.hour() - 9;
-   var hourIndex = 13 - 9;
+   var hourIndex = today.hour() - 9;
+   
    for (let i = 0; i < textareasEl.length; i++) {
       if (hourIndex == i) {
          textareasEl[i].addClass("present");
